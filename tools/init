@@ -1,20 +1,16 @@
 #!/usr/bin/env bash
 #
 # Init the environment for new user.
-
 set -eu
-
 # CLI Dependencies
 CLI=("git" "npm")
-
 ACTIONS_WORKFLOW=pages-deploy.yml
-
 # temporary file suffixes that make `sed -i` compatible with BSD and Linux
 TEMP_SUFFIX="to-delete"
-
 _no_gh=false
 
-help() {
+#help() 
+{
   echo "Usage:"
   echo
   echo "   bash /path/to/init [options]"
@@ -23,7 +19,6 @@ help() {
   echo "     --no-gh              Do not deploy to Github."
   echo "     -h, --help           Print this help information."
 }
-
 # BSD and GNU compatible sed
 _sedi() {
   regex=$1
@@ -31,7 +26,6 @@ _sedi() {
   sed -i.$TEMP_SUFFIX "$regex" "$file"
   rm -f "$file".$TEMP_SUFFIX
 }
-
 _check_cli() {
   for i in "${!CLI[@]}"; do
     cli="${CLI[$i]}"
